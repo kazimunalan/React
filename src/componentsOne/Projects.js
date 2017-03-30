@@ -7,6 +7,9 @@ class Projects extends Component {
     deleteProject(id){
         this.props.onDelete(id);
     }
+    updateProject(id){
+        this.props.onUpdate(id);
+    }
 
     render() {
         let projectItems;
@@ -15,7 +18,7 @@ class Projects extends Component {
             {
                 console.log(project);
                 return (
-                    <ProjectItem onDelete={this.deleteProject.bind(this)} key={project.id} project={project}/>
+                    <ProjectItem onUpdate={this.updateProject.bind(this)} onDelete={this.deleteProject.bind(this)} key={project.id} project={project}/>
                 );
             });
         }
@@ -29,5 +32,8 @@ class Projects extends Component {
     }
 }
 
-
+Projects.propTypes = {
+    projects: React.PropTypes.array,
+    onDelete: React.PropTypes.func
+}
 export default Projects;

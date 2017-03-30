@@ -47,7 +47,10 @@ class AddProject extends Component {
     handleSubmit(e){
         // console.log("Handle Submit");
         // console.log(this.refs.title.value);
-        if(this.refs.name.value ==='' ){
+        if(this.refs.name.value ==='' && this.refs.surname.value===''){
+            alert("Name is required and Surname is required");
+        }
+        else if(this.refs.name.value ==='' ){
             alert("Name is required");
         }
         else if( this.refs.surname.value===''){
@@ -69,6 +72,9 @@ class AddProject extends Component {
             e.preventDefault();
     }
 }
-
+AddProject.propTypes = {
+    jobs: React.PropTypes.array,
+    addProject: React.PropTypes.func
+}
 
 export default AddProject;

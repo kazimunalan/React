@@ -8,14 +8,12 @@ class ProjectItem extends Component {
     render() {
         //console.log(this.props);
         return (
-           <ul className="Project">
+           <ul className="Project" >
                {/*{this.props.project.id}*/}
                <li>
-                   {this.props.project.name}
+                   {this.props.project.name} - {this.props.project.surname}
                </li>
-               <li>
-                   {this.props.project.surname}
-               </li>
+
                <li>
                    {this.props.project.age}
                </li>
@@ -26,6 +24,10 @@ class ProjectItem extends Component {
                    {/*<a href="#" onClick={this.deleteProject.bind(this, this.props.project.id)}> X </a>*/}
                    <Button bsStyle="primary" onClick={this.deleteProject.bind(this,this.props.project.id)}> Delete </Button>
                </li>
+               <li>
+
+                   <Button bsStyle="primary" onClick={this.updateProject.bind(this,this.props.project.id)}> Update </Button>
+               </li>
            </ul>
         );
     }
@@ -34,8 +36,15 @@ class ProjectItem extends Component {
         //console.log("test");
         this.props.onDelete(id);
     }
+    updateProject(id){
+        //console.log("test");
+        this.props.onUpdate(id);
+    }
 }
 
-
+ProjectItem.propTypes = {
+    projects: React.PropTypes.object,
+    onDelete: React.PropTypes.func
+}
 
 export default ProjectItem;
